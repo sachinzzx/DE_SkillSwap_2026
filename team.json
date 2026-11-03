@@ -1,0 +1,28 @@
+
+{
+  "team_number": "T0103",
+  "group_lead": {
+    "name": "Sachin Kumar",
+    "enrollment_no": "2501010567",
+    "github": "sachinzzx"
+  },
+  "members": [
+    {
+      "name": "Manvendra Singh",
+      "enrollment_no": "2501010571",
+      "github": "MANVENDRA_GITHUB"
+    },
+    {
+      "name": "Amit Choudhary",
+      "enrollment_no": "2501010599",
+      "github": "AMIT_GITHUB"
+    },
+    {
+      "name": "Praveen Choudhary",
+      "enrollment_no": "2501010350",
+      "github": "PRAVEEN_GITHUB"
+    }
+  ],
+  "postgres_version": "",
+  "laptop_used_for_benchmarks": "MacBook Pro M4"
+}
