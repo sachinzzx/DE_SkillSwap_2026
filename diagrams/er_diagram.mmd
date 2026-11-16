@@ -1,0 +1,119 @@
+erDiagram
+    cities {
+        INTEGER city_id PK
+        VARCHAR city_name
+        VARCHAR state
+    }
+    categories {
+        INTEGER category_id PK
+        VARCHAR category_name UK
+        INTEGER parent_category_id FK
+        BOOLEAN is_digital
+    }
+    sellers {
+        INTEGER seller_id PK
+        VARCHAR business_name
+        VARCHAR gstin UK
+        INTEGER city_id FK
+        DATE joined_on
+        NUMERIC seller_rating
+        VARCHAR status
+    }
+    products {
+        INTEGER product_id PK
+        CHAR asin UK
+        INTEGER seller_id FK
+        INTEGER category_id FK
+        VARCHAR title
+        VARCHAR brand
+        NUMERIC mrp
+        NUMERIC price
+        INTEGER stock_qty
+        BOOLEAN is_prime_eligible
+        NUMERIC avg_rating
+        INTEGER review_count
+        DATE listed_on
+        VARCHAR status
+    }
+    customers {
+        INTEGER customer_id PK
+        VARCHAR full_name
+        VARCHAR email UK
+        VARCHAR phone UK
+        INTEGER city_id FK
+        DATE signup_date
+        BOOLEAN is_prime
+        DATE prime_since
+    }
+    addresses {
+        INTEGER address_id PK
+        INTEGER customer_id FK
+        VARCHAR label
+        VARCHAR line1
+        INTEGER city_id FK
+        CHAR pincode
+        BOOLEAN is_default
+    }
+    orders {
+        INTEGER order_id PK
+        INTEGER customer_id FK
+        INTEGER address_id FK
+        TIMESTAMPTZ ordered_at
+        VARCHAR payment_method
+        NUMERIC total_amount
+        VARCHAR status
+        TIMESTAMPTZ shipped_at
+        TIMESTAMPTZ delivered_at
+    }
+    order_items {
+        INTEGER order_id PK_FK
+        INTEGER line_no PK
+        INTEGER product_id FK
+        INTEGER seller_id FK
+        INTEGER quantity
+        NUMERIC unit_price
+    }
+    returns {
+        INTEGER return_id PK
+        INTEGER order_id FK
+        INTEGER line_no FK
+        VARCHAR reason
+        TIMESTAMPTZ requested_at
+        VARCHAR status
+        NUMERIC refund_amount
+    }
+    product_reviews {
+        INTEGER review_id PK
+        INTEGER product_id FK
+        INTEGER customer_id FK
+        SMALLINT rating
+        VARCHAR title
+        TEXT body
+        BOOLEAN verified_purchase
+        INTEGER helpful_votes
+        TIMESTAMPTZ created_at
+    }
+    cart_items {
+        INTEGER customer_id PK_FK
+        INTEGER product_id PK_FK
+        INTEGER quantity
+        TIMESTAMPTZ added_at
+    }
+
+    cities ||--o{ sellers : "city_id"
+    cities ||--o{ customers : "city_id"
+    cities ||--o{ addresses : "city_id"
+    categories ||--o{ categories : "parent"
+    categories ||--o{ products : "category_id"
+    sellers ||--o{ products : "seller_id"
+    sellers ||--o{ order_items : "seller_id"
+    customers ||--o{ addresses : "customer_id"
+    customers ||--o{ orders : "customer_id"
+    customers ||--o{ product_reviews : "customer_id"
+    customers ||--o{ cart_items : "customer_id"
+    addresses ||--o{ orders : "address_id"
+    products ||--o{ order_items : "product_id"
+    products ||--o{ product_reviews : "product_id"
+    products ||--o{ cart_items : "product_id"
+    orders ||--o{ order_items : "order_id"
+    order_items ||--o| returns : "order_id+line_no"

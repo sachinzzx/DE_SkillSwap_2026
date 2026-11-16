@@ -22,12 +22,12 @@
 
 | Role | Name | Enrollment No. | GitHub Username |
 |------|------|----------------|-----------------|
-| Group Lead | | | |
-| Member 2 | | | |
-| Member 3 | | | |
-| Member 4 | | | |
+| Group Lead | Sachin Kumar | 2501010567 | sachinzzx |
+| Member 2 | Manvendra Singh | 2501010571 | MANVENDRA_GITHUB |
+| Member 3 | Amit Choudhary | 2501010599 | AMIT_GITHUB |
+| Member 4 | Praveen Choudhary | 2501010350 | PRAVEEN_GITHUB |
 
-**Team No.:** ____ · **Section:** ____ · **Repository URL:** ____
+**Team No.:** T0103 (SkillSwap) · **Section:** A · **Repository URL:** https://github.com/sachinzzx/DE_SkillSwap_2026
 
 ---
 

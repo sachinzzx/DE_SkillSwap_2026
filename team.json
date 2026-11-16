@@ -23,6 +23,6 @@
       "github": "PRAVEEN_GITHUB"
     }
   ],
-  "postgres_version": "",
+  "postgres_version": "18.4",
   "laptop_used_for_benchmarks": "MacBook Pro M4"
 }
