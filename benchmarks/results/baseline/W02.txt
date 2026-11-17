@@ -1,0 +1,36 @@
+=== W02 run 1 ===
+Update on products  (cost=0.29..8.31 rows=0 width=0) (actual time=1.005..1.005 rows=0.00 loops=1)
+  Buffers: shared hit=53 read=5 dirtied=5
+  ->  Index Scan using products_pkey on products  (cost=0.29..8.31 rows=1 width=10) (actual time=0.165..0.165 rows=1.00 loops=1)
+        Index Cond: (product_id = 4322)
+        Filter: (stock_qty >= 1)
+        Index Searches: 1
+        Buffers: shared hit=2 read=1
+Planning:
+  Buffers: shared hit=91
+Planning Time: 0.399 ms
+Execution Time: 2.265 ms
+=== W02 run 2 ===
+Update on products  (cost=0.29..8.31 rows=0 width=0) (actual time=0.352..0.352 rows=0.00 loops=1)
+  Buffers: shared hit=69 dirtied=4 written=1
+  ->  Index Scan using products_pkey on products  (cost=0.29..8.31 rows=1 width=10) (actual time=0.021..0.024 rows=1.00 loops=1)
+        Index Cond: (product_id = 4322)
+        Filter: (stock_qty >= 1)
+        Index Searches: 1
+        Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=91
+Planning Time: 0.352 ms
+Execution Time: 0.445 ms
+=== W02 run 3 ===
+Update on products  (cost=0.29..8.31 rows=0 width=0) (actual time=0.342..0.344 rows=0.00 loops=1)
+  Buffers: shared hit=58
+  ->  Index Scan using products_pkey on products  (cost=0.29..8.31 rows=1 width=10) (actual time=0.030..0.034 rows=1.00 loops=1)
+        Index Cond: (product_id = 4322)
+        Filter: (stock_qty >= 1)
+        Index Searches: 1
+        Buffers: shared hit=5
+Planning:
+  Buffers: shared hit=91
+Planning Time: 0.387 ms
+Execution Time: 0.462 ms

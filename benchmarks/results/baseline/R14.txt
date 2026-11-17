@@ -1,0 +1,45 @@
+=== R14 run 1 ===
+Limit  (cost=1412.39..1412.51 rows=50 width=104) (actual time=7.777..7.783 rows=50.00 loops=1)
+  Buffers: shared hit=478
+  ->  Sort  (cost=1412.39..1434.94 rows=9020 width=104) (actual time=7.776..7.778 rows=50.00 loops=1)
+        Sort Key: ((price / mrp))
+        Sort Method: top-N heapsort  Memory: 36kB
+        Buffers: shared hit=478
+        ->  Seq Scan on products  (cost=0.00..1112.75 rows=9020 width=104) (actual time=0.016..7.177 rows=2495.00 loops=1)
+              Filter: (((status)::text = 'ACTIVE'::text) AND (price < (mrp * 0.5)))
+              Rows Removed by Filter: 27505
+              Buffers: shared hit=475
+Planning:
+  Buffers: shared hit=148
+Planning Time: 0.412 ms
+Execution Time: 7.810 ms
+=== R14 run 2 ===
+Limit  (cost=1412.39..1412.51 rows=50 width=104) (actual time=7.771..7.777 rows=50.00 loops=1)
+  Buffers: shared hit=478
+  ->  Sort  (cost=1412.39..1434.94 rows=9020 width=104) (actual time=7.770..7.772 rows=50.00 loops=1)
+        Sort Key: ((price / mrp))
+        Sort Method: top-N heapsort  Memory: 36kB
+        Buffers: shared hit=478
+        ->  Seq Scan on products  (cost=0.00..1112.75 rows=9020 width=104) (actual time=0.014..7.169 rows=2495.00 loops=1)
+              Filter: (((status)::text = 'ACTIVE'::text) AND (price < (mrp * 0.5)))
+              Rows Removed by Filter: 27505
+              Buffers: shared hit=475
+Planning:
+  Buffers: shared hit=148
+Planning Time: 0.412 ms
+Execution Time: 7.803 ms
+=== R14 run 3 ===
+Limit  (cost=1412.39..1412.51 rows=50 width=104) (actual time=7.582..7.587 rows=50.00 loops=1)
+  Buffers: shared hit=478
+  ->  Sort  (cost=1412.39..1434.94 rows=9020 width=104) (actual time=7.581..7.583 rows=50.00 loops=1)
+        Sort Key: ((price / mrp))
+        Sort Method: top-N heapsort  Memory: 36kB
+        Buffers: shared hit=478
+        ->  Seq Scan on products  (cost=0.00..1112.75 rows=9020 width=104) (actual time=0.015..7.005 rows=2495.00 loops=1)
+              Filter: (((status)::text = 'ACTIVE'::text) AND (price < (mrp * 0.5)))
+              Rows Removed by Filter: 27505
+              Buffers: shared hit=475
+Planning:
+  Buffers: shared hit=148
+Planning Time: 0.418 ms
+Execution Time: 7.612 ms
