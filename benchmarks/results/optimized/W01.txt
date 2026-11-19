@@ -1,0 +1,30 @@
+=== W01 run 1 ===
+Insert on orders  (cost=0.00..0.01 rows=0 width=0) (actual time=0.438..0.438 rows=0.00 loops=1)
+  Buffers: shared hit=169 dirtied=1
+  ->  Result  (cost=0.00..0.01 rows=1 width=140) (actual time=0.003..0.003 rows=1.00 loops=1)
+Planning:
+  Buffers: shared hit=3
+Planning Time: 0.075 ms
+Trigger for constraint orders_customer_id_fkey: time=0.602 calls=1
+Trigger for constraint orders_address_id_fkey: time=0.213 calls=1
+Execution Time: 1.275 ms
+=== W01 run 2 ===
+Insert on orders  (cost=0.00..0.01 rows=0 width=0) (actual time=0.411..0.411 rows=0.00 loops=1)
+  Buffers: shared hit=170 dirtied=1
+  ->  Result  (cost=0.00..0.01 rows=1 width=140) (actual time=0.003..0.003 rows=1.00 loops=1)
+Planning:
+  Buffers: shared hit=3
+Planning Time: 0.070 ms
+Trigger for constraint orders_customer_id_fkey: time=0.599 calls=1
+Trigger for constraint orders_address_id_fkey: time=0.206 calls=1
+Execution Time: 1.238 ms
+=== W01 run 3 ===
+Insert on orders  (cost=0.00..0.01 rows=0 width=0) (actual time=0.437..0.437 rows=0.00 loops=1)
+  Buffers: shared hit=170 dirtied=1
+  ->  Result  (cost=0.00..0.01 rows=1 width=140) (actual time=0.004..0.004 rows=1.00 loops=1)
+Planning:
+  Buffers: shared hit=3
+Planning Time: 0.086 ms
+Trigger for constraint orders_customer_id_fkey: time=0.650 calls=1
+Trigger for constraint orders_address_id_fkey: time=0.215 calls=1
+Execution Time: 1.326 ms

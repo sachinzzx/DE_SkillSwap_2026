@@ -1,0 +1,81 @@
+=== R17 run 1 ===
+Nested Loop Anti Join  (cost=1.01..11482.28 rows=1 width=12) (actual time=7.135..189.072 rows=1000.00 loops=1)
+  Buffers: shared hit=215319
+  ->  Seq Scan on product_reviews r  (cost=0.00..852.62 rows=35645 width=12) (actual time=0.006..8.601 rows=35662.00 loops=1)
+        Filter: verified_purchase
+        Rows Removed by Filter: 3000
+        Buffers: shared hit=466
+  ->  Hash Join  (cost=1.01..1.30 rows=1 width=8) (actual time=0.005..0.005 rows=0.97 loops=35662)
+        Hash Cond: (oi.order_id = o.order_id)
+        Buffers: shared hit=214853
+        ->  Index Only Scan using idx_order_items_product_id on order_items oi  (cost=0.42..0.68 rows=9 width=8) (actual time=0.002..0.002 rows=4.45 loops=35646)
+              Index Cond: (product_id = r.product_id)
+              Heap Fetches: 0
+              Index Searches: 35646
+              Buffers: shared hit=107380
+        ->  Hash  (cost=0.54..0.54 rows=4 width=8) (actual time=0.002..0.002 rows=4.65 loops=35662)
+              Buckets: 1024  Batches: 1  Memory Usage: 9kB
+              Buffers: shared hit=107473
+              ->  Index Only Scan using idx_orders_customer_delivered on orders o  (cost=0.42..0.54 rows=4 width=8) (actual time=0.001..0.002 rows=4.65 loops=35662)
+                    Index Cond: (customer_id = r.customer_id)
+                    Heap Fetches: 19
+                    Index Searches: 35662
+                    Buffers: shared hit=107473
+Planning:
+  Buffers: shared hit=573
+Planning Time: 1.926 ms
+Execution Time: 189.148 ms
+=== R17 run 2 ===
+Nested Loop Anti Join  (cost=1.01..11482.28 rows=1 width=12) (actual time=7.017..185.046 rows=1000.00 loops=1)
+  Buffers: shared hit=215319
+  ->  Seq Scan on product_reviews r  (cost=0.00..852.62 rows=35645 width=12) (actual time=0.008..8.667 rows=35662.00 loops=1)
+        Filter: verified_purchase
+        Rows Removed by Filter: 3000
+        Buffers: shared hit=466
+  ->  Hash Join  (cost=1.01..1.30 rows=1 width=8) (actual time=0.005..0.005 rows=0.97 loops=35662)
+        Hash Cond: (oi.order_id = o.order_id)
+        Buffers: shared hit=214853
+        ->  Index Only Scan using idx_order_items_product_id on order_items oi  (cost=0.42..0.68 rows=9 width=8) (actual time=0.002..0.002 rows=4.45 loops=35646)
+              Index Cond: (product_id = r.product_id)
+              Heap Fetches: 0
+              Index Searches: 35646
+              Buffers: shared hit=107380
+        ->  Hash  (cost=0.54..0.54 rows=4 width=8) (actual time=0.002..0.002 rows=4.65 loops=35662)
+              Buckets: 1024  Batches: 1  Memory Usage: 9kB
+              Buffers: shared hit=107473
+              ->  Index Only Scan using idx_orders_customer_delivered on orders o  (cost=0.42..0.54 rows=4 width=8) (actual time=0.001..0.002 rows=4.65 loops=35662)
+                    Index Cond: (customer_id = r.customer_id)
+                    Heap Fetches: 19
+                    Index Searches: 35662
+                    Buffers: shared hit=107473
+Planning:
+  Buffers: shared hit=573
+Planning Time: 1.990 ms
+Execution Time: 185.131 ms
+=== R17 run 3 ===
+Nested Loop Anti Join  (cost=1.01..11482.28 rows=1 width=12) (actual time=6.883..187.347 rows=1000.00 loops=1)
+  Buffers: shared hit=215319
+  ->  Seq Scan on product_reviews r  (cost=0.00..852.62 rows=35645 width=12) (actual time=0.007..9.637 rows=35662.00 loops=1)
+        Filter: verified_purchase
+        Rows Removed by Filter: 3000
+        Buffers: shared hit=466
+  ->  Hash Join  (cost=1.01..1.30 rows=1 width=8) (actual time=0.005..0.005 rows=0.97 loops=35662)
+        Hash Cond: (oi.order_id = o.order_id)
+        Buffers: shared hit=214853
+        ->  Index Only Scan using idx_order_items_product_id on order_items oi  (cost=0.42..0.68 rows=9 width=8) (actual time=0.002..0.002 rows=4.45 loops=35646)
+              Index Cond: (product_id = r.product_id)
+              Heap Fetches: 0
+              Index Searches: 35646
+              Buffers: shared hit=107380
+        ->  Hash  (cost=0.54..0.54 rows=4 width=8) (actual time=0.002..0.002 rows=4.65 loops=35662)
+              Buckets: 1024  Batches: 1  Memory Usage: 9kB
+              Buffers: shared hit=107473
+              ->  Index Only Scan using idx_orders_customer_delivered on orders o  (cost=0.42..0.54 rows=4 width=8) (actual time=0.001..0.002 rows=4.65 loops=35662)
+                    Index Cond: (customer_id = r.customer_id)
+                    Heap Fetches: 19
+                    Index Searches: 35662
+                    Buffers: shared hit=107473
+Planning:
+  Buffers: shared hit=573
+Planning Time: 1.828 ms
+Execution Time: 187.419 ms
